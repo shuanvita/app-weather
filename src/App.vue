@@ -1,5 +1,7 @@
 <script setup></script>
 
-<template></template>
+<template>
+  <div>App weather</div>
+</template>
 
 <style scoped></style>
