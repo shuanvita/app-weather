@@ -1,11 +1,11 @@
-<script setup></script>
+<script setup>
+import Button from "./components/Button.vue";
+</script>
 
 <template>
-  <main class="bg-primary text-2xl text-white">
-    <div>
-      <button class="cursor-pointer bg-[image:var(--color-gradient-button)]">
-        Сохранить
-      </button>
+  <main class="bg-primary grid min-h-[100vh] place-items-center text-white">
+    <div class="bg-secondary rounded-[25px] px-[50px] py-15">
+      <Button>Сохранить</Button>
     </div>
   </main>
 </template>
