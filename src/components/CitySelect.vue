@@ -5,6 +5,7 @@ import IconLocation from "../icons/iconLocation.vue";
 import Input from "./Input.vue";
 
 const isCityEdited = ref(false);
+let city = ref("Moscow");
 
 const emit = defineEmits({
   selectCity(payload) {
@@ -29,7 +30,7 @@ const edit = () => {
     Изменить город
   </Button>
   <div class="flex items-center gap-3" v-else>
-    <Input />
+    <Input v-model="city" />
     <Button @click="select"> Сохранить </Button>
   </div>
 </template>
