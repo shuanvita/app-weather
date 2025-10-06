@@ -10,6 +10,7 @@ const API_ENDPOINT = "http://api.weatherapi.com/v1";
 const errorMap = new Map([[1006, "Указанный город не найден"]]);
 const data = ref();
 let error = ref();
+let activeIndex = ref(0);
 const dataModified = computed(() => {
   return [
     {
@@ -57,12 +58,13 @@ async function getCity(city) {
         </div>
         <div class="flex gap-[1px]">
           <DayCard
-            v-for="item in data.forecast.forecastday"
+            v-for="(item, idx) in data.forecast.forecastday"
             :key="item.date"
             :weather-code="item.day.condition.code"
             :temp="item.day.avgtemp_c"
             :date="new Date(item.date)"
-            @click="console.log('click')"
+            :is-active="activeIndex === idx"
+            @click="() => (activeIndex = idx)"
           />
         </div>
       </div>

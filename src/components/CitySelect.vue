@@ -29,7 +29,7 @@ onMounted(() => {
     Изменить город
   </Button>
   <div class="flex items-center gap-3" v-else>
-    <Input v-model="city" @keyup.enter="selectCity" />
+    <Input v-model="city" @keyup.enter="selectCity" v-focus />
     <Button @click="selectCity">Сохранить</Button>
   </div>
 </template>
