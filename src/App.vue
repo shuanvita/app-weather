@@ -1,34 +1,12 @@
 <script setup>
-import { ref, computed } from "vue";
-import CitySelect from "./components/CitySelect.vue";
-import Stat from "./components/Stat.vue";
-import Error from "./components/Error.vue";
-import DayCard from "./components/DayCard.vue";
+import { ref } from "vue";
+import PanelRight from "./components/PanelRight.vue";
 
 const API_ENDPOINT = "http://api.weatherapi.com/v1";
 
-const errorMap = new Map([[1006, "Указанный город не найден"]]);
 const data = ref();
 let error = ref();
 let activeIndex = ref(0);
-const dataModified = computed(() => {
-  return [
-    {
-      label: "Влажность",
-      stat: `${data.value.current.humidity} %`,
-    },
-    {
-      label: "Облачность",
-      stat: `${data.value.current.cloud} %`,
-    },
-    {
-      label: "Ветер",
-      stat: `${data.value.current.wind_kph} км/ч`,
-    },
-  ];
-});
-
-const errorDisplay = computed(() => errorMap.get(error?.value?.error?.code));
 
 async function getCity(city) {
   const params = new URLSearchParams({
@@ -49,27 +27,19 @@ async function getCity(city) {
 </script>
 
 <template>
-  <main class="bg-primary grid min-h-[100vh] place-items-center text-white">
-    <div class="bg-secondary rounded-[25px] px-[50px] py-15">
-      <Error v-if="error" :error="errorDisplay" />
-      <div class="mb-[70px] flex flex-col gap-[80px]" v-if="data">
-        <div>
-          <Stat v-for="stat in dataModified" v-bind="stat" :key="stat.name" />
-        </div>
-        <div class="flex gap-[1px]">
-          <DayCard
-            v-for="(item, idx) in data.forecast.forecastday"
-            :key="item.date"
-            :weather-code="item.day.condition.code"
-            :temp="item.day.avgtemp_c"
-            :date="new Date(item.date)"
-            :is-active="activeIndex === idx"
-            @click="() => (activeIndex = idx)"
-          />
-        </div>
-      </div>
-      <CitySelect @select-city="getCity" />
-    </div>
+  <main
+    class="bg-primary flex min-h-[100vh] items-center justify-center text-white"
+  >
+    <div
+      class="h-[680px] w-[500px] rounded-[30px] bg-[url(/bg-left-panel.png)] bg-cover bg-no-repeat"
+    ></div>
+    <PanelRight
+      :data="data"
+      :error="error"
+      :active-index="activeIndex"
+      @select-index="(idx) => (activeIndex = idx)"
+      @select-city="getCity"
+    />
   </main>
 </template>
 
