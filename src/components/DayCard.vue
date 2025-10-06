@@ -20,7 +20,7 @@ const iconColor = computed(() => {
 <template>
   <button
     :class="[
-      'bg-card hover:bg-card-hover flex cursor-pointer flex-col items-center gap-[15px] rounded-[10px] px-5 py-[24px] shadow-[1px_2px_4px_0_#222831]',
+      'bg-card hover:bg-card-hover flex w-full cursor-pointer flex-col items-center gap-[15px] rounded-[10px] px-5 py-[24px] shadow-[1px_2px_4px_0_#222831]',
       {
         'bg-white text-black hover:bg-white hover:text-black': isActive,
       },
