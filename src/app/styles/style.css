@@ -1,0 +1,39 @@
+@import 'tailwindcss';
+@import './fonts.css';
+
+@layer base {
+  :root {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    --color-body: #191b1f;
+    --color-panel: linear-gradient(
+      168deg,
+      rgba(255, 255, 255, 0.1) 11.67%,
+      rgba(153, 153, 153, 0.1) 80.37%
+    );
+  }
+}
+
+@layer utilities {
+  .bg-gradient-panel {
+    background-image: var(--color-panel);
+  }
+}
+
+@theme {
+  --default-font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui;
+  --color-body: #191b1f;
+  --color-card: rgba(37, 34, 34, 0.65);
+}
+
+body {
+  @apply bg-body p-[15px] text-[17px]/[36px] text-white;
+}
+
+.container {
+  @apply mx-auto max-w-[1440px];
+}
