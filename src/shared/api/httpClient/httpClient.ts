@@ -8,5 +8,5 @@ export const httpClient = async <T>(url: string, options: HttpOptions = { method
 
   if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`)
 
-  return response.json() as Promise<T>
+  return await response.json() as Promise<T>
 }

@@ -4,6 +4,8 @@ import DetailsWeather from './components/DetailsWeather.vue'
 </script>
 
 <template>
-  <CurrentWeather />
-  <DetailsWeather />
+  <div class="container grid grid-cols-[452px_1fr] gap-5">
+    <CurrentWeather />
+    <DetailsWeather />
+  </div>
 </template>

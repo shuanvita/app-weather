@@ -28,6 +28,7 @@
   --default-font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui;
   --color-body: #191b1f;
   --color-card: rgba(37, 34, 34, 0.65);
+  --color-card-hover: #C2D4D3;
 }
 
 body {
@@ -35,5 +36,5 @@ body {
 }
 
 .container {
-  @apply mx-auto max-w-[1440px];
+  @apply mx-auto max-w-[1410px];
 }

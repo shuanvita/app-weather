@@ -1,5 +1,5 @@
 export interface IDayWeather {
   name: string
-  icon: string
+  image: string
   temp: number
 }

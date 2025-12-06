@@ -5,11 +5,11 @@ const props = defineProps<IDayWeather>()
 </script>
 
 <template>
-  <div
-    class="flex flex-col p-4 gap-2 bg-card rounded-xl border/10 border-black shadow-[2px_4px_5px_0_rgba(0,0,0,0.25)]"
+  <button
+    class="flex cursor-pointer hover:bg-card-hover hover:text-black duration-200 flex-col p-4 gap-2 bg-card rounded-xl border/10 border-black shadow-[2px_4px_5px_0_rgba(0,0,0,0.25)]"
   >
-    <div>Sun</div>
-    <img :src="props.icon" alt="" />
-    <div>32°</div>
-  </div>
+    <span>Sun</span>
+    <img src="/images/windy.png" alt="" />
+    <span>32°</span>
+  </button>
 </template>
