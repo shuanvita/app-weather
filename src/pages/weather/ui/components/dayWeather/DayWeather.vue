@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IDayWeather } from './dayWeather.type'
+import type { IDayWeather } from './dayWeather.types'
 
 const props = defineProps<IDayWeather>()
 </script>
