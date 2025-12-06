@@ -1,5 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import WeatherPage from '@/pages/weather/ui/WeatherPage.vue'
+</script>
 
 <template>
-  <div>Vue + Vite + Tailwind. StartKit</div>
+  <WeatherPage />
 </template>
