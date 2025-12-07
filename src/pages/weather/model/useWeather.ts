@@ -1,6 +1,6 @@
 import { ref, onMounted } from 'vue'
 import { getWeatherByCity } from '@/pages/weather/api/weatherApi'
-import { weatherConfig } from '@/shared/config/weatherConfig'
+import { weatherConfig } from '@/shared/config'
 import type { WeatherResponse } from './useWeather.types'
 
 export const useWeather = () => {

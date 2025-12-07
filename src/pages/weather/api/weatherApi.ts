@@ -1,5 +1,5 @@
 import { httpClient } from '@/shared/api'
-import { weatherConfig } from '@/shared/config/weatherConfig'
+import { weatherConfig } from '@/shared/config'
 
 export const getWeatherByCity = (
   city = weatherConfig.defaultCity,
