@@ -13,6 +13,7 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix --cache",
+    "prepare": "husky",
     "format": "prettier --write --experimental-cli src/",
     "lint-fsd": "npx steiger ./src"
   },
