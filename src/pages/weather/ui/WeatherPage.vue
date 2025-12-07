@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { useWeather } from '../model/useWeather'
 import CurrentWeather from './components/CurrentWeather.vue'
 import DetailsWeather from './components/DetailsWeather.vue'
+
+const { data, loading, error, load } = useWeather()
 </script>
 
 <template>
