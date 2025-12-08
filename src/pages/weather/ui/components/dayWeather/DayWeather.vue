@@ -6,7 +6,7 @@
 
 <template>
   <button
-    class="flex cursor-pointer hover:bg-card-hover hover:text-black duration-200 flex-col p-4 gap-2 bg-card rounded-xl border/10 border-black shadow-[2px_4px_5px_0_rgba(0,0,0,0.25)]"
+    class="flex cursor-pointer duration-200 flex-col p-4 gap-2 bg-card rounded-xl border/10 border-black shadow-[2px_4px_5px_0_rgba(0,0,0,0.25)]"
   >
     <span>Sun</span>
     <img src="/images/windy.png" alt="" />
