@@ -78,7 +78,7 @@ const todayWeatherCards = computed(() => {
     <div class="grid grid-cols-3 gap-5">
       <TodayWeatherCard v-for="(item, idx) in todayWeatherCards" :key="idx" :data="item" />
     </div>
-    <div>
+    <div class="grid grid-cols-[556px_1fr] gap-5">
       <TodayPrecipitationCard />
       <SunTimesCard />
     </div>

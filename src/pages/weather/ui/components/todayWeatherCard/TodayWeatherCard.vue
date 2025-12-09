@@ -7,7 +7,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="py-[15px] px-5 rounded-[20px] bg-card">
+  <div class="py-[15px] px-5 rounded-[20px] bg-card shadow-[2px_4px_5px_0_rgba(0,0,0,0.25)]">
     <div class="text-[17px]/[36px] font-medium mb-[30px]">{{ props.data.title }}</div>
     <div class="flex justify-between items-end">
       <div>
