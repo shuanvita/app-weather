@@ -18,6 +18,19 @@ const weatherInfo = computed(() => [
     text: 'Max Temperature - 31°C',
   },
 ])
+
+const weatherStats = computed(() => [
+  {
+    icon: 'outline/water',
+    value: '83%',
+    text: 'Humidity',
+  },
+  {
+    icon: 'outline/wind',
+    value: '6km/h',
+    text: 'Wind Speed',
+  },
+])
 </script>
 
 <template>
@@ -29,6 +42,6 @@ const weatherInfo = computed(() => [
     <div class="self-start">
       <WeatherInfo :data="weatherInfo" />
     </div>
-    <WeatherStats />
+    <WeatherStats :data="weatherStats" />
   </div>
 </template>
