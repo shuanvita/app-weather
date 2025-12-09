@@ -37,7 +37,7 @@ const weatherStats = computed(() => [
   <div
     class="flex flex-col items-center gap-[49px] rounded-[28px] py-10 px-[47px] border border-black/10 bg-gradient-panel"
   >
-    <v-input />
+    <v-input class="max-w-[341px]" />
     <WeatherNow />
     <div class="self-start">
       <WeatherInfo :data="weatherInfo" />
