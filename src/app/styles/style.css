@@ -34,6 +34,12 @@ body {
   @apply bg-body p-[15px] text-[17px]/[36px] text-white;
 }
 
+/* @layer components {
+  .container {
+    @apply mx-auto max-w-[375px] xl:max-w-[1410px];
+  }
+} */
+
 .container {
   @apply mx-auto max-w-[1410px];
 }

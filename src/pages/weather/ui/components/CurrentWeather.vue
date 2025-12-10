@@ -35,7 +35,7 @@ const weatherStats = computed(() => [
 
 <template>
   <div
-    class="flex flex-col items-center gap-[49px] rounded-[28px] py-10 px-[47px] border border-black/10 bg-gradient-panel"
+    class="flex flex-col items-center gap-6 xl:gap-[49px] rounded-[28px] p-5 xl:py-10 xl:px-[47px] border border-black/10 bg-gradient-panel"
   >
     <v-input class="max-w-[341px]" />
     <WeatherNow />

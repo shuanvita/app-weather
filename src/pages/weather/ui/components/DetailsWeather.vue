@@ -72,12 +72,12 @@ const todayWeatherCards = computed(() => {
 </script>
 
 <template>
-  <div class="p-10 pt-[41px] pl-[47px] rounded-[28px] border border-black/10 bg-gradient-panel">
-    <div class="flex gap-[26px] text-[24px] font-semibold mb-[66px]">
+  <div class="p-5 xl:p-10 rounded-[28px] border border-black/10 bg-gradient-panel">
+    <div class="flex gap-6 text-[18px] xl:text-[24px] font-semibold mb-8 xl:mb-20">
       <span class="text-white/50">Today</span>
       <span class="underline underline-offset-[30%] decoration-wavy decoration-[10%]">Week</span>
     </div>
-    <div class="grid grid-cols-7 gap-4 pl-[5px] mb-[61px]">
+    <div class="grid grid-cols-2 xl:grid-cols-7 gap-4 mb-[61px]">
       <DayWeather v-for="(item, idx) in weatherDays" :key="idx" v-bind="item" />
     </div>
     <h2 class="text-[24px] font-semibold mb-[46px]">Today’s Overview</h2>
