@@ -11,6 +11,7 @@ export const getWeatherByCity = (
       key: weatherConfig.apiKey,
       q: city,
       days,
+      aqi: 'yes',
       lang: 'en',
     },
   })

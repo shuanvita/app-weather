@@ -12,4 +12,12 @@ export interface WeatherResponse {
     humidity: number
     wind_kph: number
   }
+  forecast: {
+    forecastday: {
+      day: {
+        maxtemp_c: number
+        mintemp_c: number
+      }[]
+    }
+  }
 }

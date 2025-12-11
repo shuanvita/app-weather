@@ -81,10 +81,10 @@ const todayWeatherCards = computed(() => {
       <DayWeather v-for="(item, idx) in weatherDays" :key="idx" v-bind="item" />
     </div>
     <h2 class="text-[24px] font-semibold mb-[46px]">Today’s Overview</h2>
-    <div class="grid grid-cols-3 gap-5 mb-[49px]">
+    <div class="grid xl:grid-cols-3 gap-5 mb-[49px]">
       <TodayWeatherCard v-for="(item, idx) in todayWeatherCards" :key="idx" :data="item" />
     </div>
-    <div class="grid grid-cols-[556px_1fr] gap-5">
+    <div class="grid xl:grid-cols-[556px_1fr] gap-5">
       <TodayPrecipitationCard />
       <SunTimesCard />
     </div>
