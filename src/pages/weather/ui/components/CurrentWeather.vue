@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import WeatherNow from './weatherNow/WeatherNow.vue'
-import WeatherInfo from './weatherInfo/WeatherInfo.vue'
+import WeatherCondition from '@/pages/weather/ui/components/weatherCondition/WeatherCondition.vue'
 import WeatherStats from './weatherStats/WeatherStats.vue'
 
 const { data } = defineProps({
@@ -15,20 +15,11 @@ const weatherNowProps = computed(() => ({
   location: data?.location,
 }))
 
-const weatherInfo = computed(() => [
-  {
-    icon: 'outline/cloud-rain',
-    text: 'Light Rain',
-  },
-  {
-    icon: 'outline/min-temp',
-    text: 'Min Temperature - 28°C',
-  },
-  {
-    icon: 'outline/max-temp',
-    text: 'Max Temperature - 31°C',
-  },
-])
+const weatherConditionProps = computed(() => ({
+  condition: data?.condition,
+  minTemp: data?.minTemp,
+  maxTemp: data?.maxTemp,
+}))
 
 const weatherStats = computed(() => [
   {
@@ -51,7 +42,7 @@ const weatherStats = computed(() => [
     <v-input class="max-w-[341px]" />
     <WeatherNow :data="weatherNowProps" />
     <div class="self-start">
-      <WeatherInfo :data="weatherInfo" />
+      <WeatherCondition :data="weatherConditionProps" />
     </div>
     <WeatherStats :data="weatherStats" />
   </div>
