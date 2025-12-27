@@ -7,6 +7,7 @@ export const useTheme = () => {
     valueDark: 'dark',
     valueLight: 'light',
     storageKey: 'theme',
+    initialValue: 'dark',
   })
 
   const toggleTheme = () => {

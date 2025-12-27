@@ -5,6 +5,5 @@ import { ThemeSwitcher } from '@/features/theme-switcher'
 <template>
   <div class="container min-h-screen py-8">
     <h1>Startkit</h1>
-    <ThemeSwitcher />
   </div>
 </template>
