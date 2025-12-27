@@ -1,9 +1,17 @@
 @import 'tailwindcss';
 @import './fonts.css';
 
+@theme {
+  --default-font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui;
+  --font-size-base: 17px;
+  --line-height-base: 1.6;
+  --color-bg-body: #191B1F;
+  --color-text-body: #fff;
+}
+
 @layer base {
   :root {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: var(--default-font-family), sans-serif;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -11,12 +19,12 @@
   }
 }
 
-@theme {
-  --default-font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui;
-}
-
 body {
-  @apply text-[17px]/[36px] ;
+  @apply p-3.75 font-medium;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  background-color: var(--color-bg-body);
+  color: var(--color-text-body);
 }
 
 .container {
