@@ -4,9 +4,19 @@
 @theme {
   --default-font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui;
   --font-size-base: 17px;
-  --line-height-base: 1.6;
+  --line-height-base: 2.12;
+
+  /* Тёмная тема (по умолчанию) */
   --color-bg-body: #191B1F;
-  --color-text-body: #fff;
+  --color-text-body: #ffffff;
+  --color-bg-card: #242731;
+  --color-border: #374151;
+
+  /* Светлая тема */
+  --color-bg-body-light: #ffffff;
+  --color-text-body-light: #111827;
+  --color-bg-card-light: #f9fafb;
+  --color-border-light: #e5e7eb;
 }
 
 @layer base {
@@ -16,6 +26,21 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  :root[data-theme="dark"],
+  :root {
+    --color-bg-body: theme('--color-bg-body');
+    --color-text-body: theme('--color-text-body');
+    --color-bg-card: theme('--color-bg-card');
+    --color-border: theme('--color-border');
+  }
+
+  :root[data-theme="light"] {
+    --color-bg-body: theme('--color-bg-body-light');
+    --color-text-body: theme('--color-text-body-light');
+    --color-bg-card: theme('--color-bg-card-light');
+    --color-border: theme('--color-border-light');
   }
 }
 
