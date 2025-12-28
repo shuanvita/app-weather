@@ -1,26 +1,17 @@
 @import 'tailwindcss';
 @import './fonts.css';
 
-@theme {
-  --default-font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui;
-  --font-size-base: 17px;
-  --line-height-base: 2.12;
-
-  /* Тёмная тема (по умолчанию) */
-  --color-bg-body: #191B1F;
-  --color-text-body: #ffffff;
-  --color-bg-card: #242731;
-  --color-border: #374151;
-
-  /* Светлая тема */
-  --color-bg-body-light: #ffffff;
-  --color-text-body-light: #111827;
-  --color-bg-card-light: #f9fafb;
-  --color-border-light: #e5e7eb;
-}
-
 @layer base {
   :root {
+    --default-font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui;
+    --font-size-base: 17px;
+    --line-height-base: 2.12;
+
+    --color-bg-body: #191B1F;
+    --color-text-body: #ffffff;
+    --color-bg-card: #242731;
+    --color-border: #374151;
+
     font-family: var(--default-font-family), sans-serif;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -28,20 +19,19 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  :root[data-theme="dark"],
-  :root {
-    --color-bg-body: theme('--color-bg-body');
-    --color-text-body: theme('--color-text-body');
-    --color-bg-card: theme('--color-bg-card');
-    --color-border: theme('--color-border');
-  }
-
   :root[data-theme="light"] {
-    --color-bg-body: theme('--color-bg-body-light');
-    --color-text-body: theme('--color-text-body-light');
-    --color-bg-card: theme('--color-bg-card-light');
-    --color-border: theme('--color-border-light');
+    --color-bg-body: #ffffff;
+    --color-text-body: #111827;
+    --color-bg-card: #f9fafb;
+    --color-border: #e5e7eb;
   }
+}
+
+@theme {
+  --color-primary: #3b82f6;
+  --color-primary-50: #eff6ff;
+  --color-secondary: #10b981;
+  --color-accent: #f59e0b;
 }
 
 body {
@@ -54,4 +44,8 @@ body {
 
 .container {
   @apply mx-auto max-w-352.5;
+}
+
+.weather-panel {
+  @apply border border-white/10 rounded-[28px] px-10 py-11.5 bg-linear-to-r from-white/10 to-gray-400/10;
 }

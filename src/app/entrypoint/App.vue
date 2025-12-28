@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { ThemeSwitcher } from '@/features/theme-switcher'
+import { WeatherPage } from '@/pages/weatherPage'
 </script>
 
 <template>
-  <div class="container min-h-screen py-8">
-    <h1>Startkit</h1>
-  </div>
+  <WeatherPage />
 </template>
