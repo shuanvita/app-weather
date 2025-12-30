@@ -3,10 +3,8 @@ import { inject } from 'vue'
 import type { NormalizeWeatherTypes } from '@/pages/weatherPage/model/normalizeWeather.types.ts'
 import ForecastDayCard from '@/pages/weatherPage/ui/components/forecastDayCard/ForecastDayCard.vue'
 
-// const { activeDayIndex } = useForecastDays()
-
 const emit = defineEmits<{
-  (e: 'click-day', index: number): void
+  'click-day': [index: number]
 }>()
 
 const { activeDayIndex } = defineProps({

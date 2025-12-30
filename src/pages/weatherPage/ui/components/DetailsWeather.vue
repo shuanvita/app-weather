@@ -1,17 +1,14 @@
 <script setup lang="ts">
 import ForecastWeek from '@/pages/weatherPage/ui/components/forecastWeek/ForecastWeek.vue'
 
-const { data, activeDayIndex } = defineProps({
-  data: {
-    type: Object,
-  },
+const { activeDayIndex } = defineProps({
   activeDayIndex: {
     type: Number,
   },
 })
 
 const emit = defineEmits<{
-  (e: 'click-day', index: number): void
+  'click-day': [index: number]
 }>()
 </script>
 

@@ -7,9 +7,10 @@ const { dayWeek, weatherIconCode, temperature, isActive } = defineProps<Forecast
 
 <template>
   <button
+    v-if="temperature !== undefined && weatherIconCode !== undefined"
     :class="[
       'flex flex-col gap-1.5  rounded-xl px-4 py-5 border border-black/10 shadow-[2px_4px_5px_0_rgba(0,0,0,0.25)] text-[24px] font-semibold hover:bg-primary duration-200',
-      isActive ? 'cursor-not-allowed bg-primary' : 'bg-card-weather cursor-pointer',
+      isActive ? 'cursor-not-allowed bg-primary shadow-none' : 'bg-card-weather cursor-pointer',
     ]"
   >
     <div>{{ dayWeek }}</div>

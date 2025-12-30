@@ -1,9 +1,8 @@
-// model/useNormalizeWeather.ts
 import { computed, type Ref } from 'vue'
 import { useWeather } from './index'
 import type { NormalizeWeatherTypes } from './normalizeWeather.types'
 
-export function useNormalizeData(activeDayIndex: Ref<number>) {
+export const useNormalizeData = (activeDayIndex: Ref<number>) => {
   const { data } = useWeather()
 
   const normalizeWeatherData = computed<NormalizeWeatherTypes>(() => {

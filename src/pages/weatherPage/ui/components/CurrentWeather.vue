@@ -7,6 +7,6 @@ const data = inject<NormalizeWeatherTypes>('normalizeWeatherData')
 
 <template>
   <div class="weather-panel">
-    <div></div>
+    <div>{{ data.temperature }}</div>
   </div>
 </template>

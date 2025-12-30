@@ -3,13 +3,6 @@ import { getCoordsByCity } from '@/pages/weatherPage/api/geocoding.api'
 import { getWeatherByCoords } from '@/pages/weatherPage/api/forecast.api'
 import { weatherConfig } from '@/shared/config'
 import type { ForecastResponse } from '../api/forecast.types.ts'
-// import type { WeatherResponse, CityCoords } from './useWeather.types'
-
-// interface WeatherState {
-//   data: WeatherResponse | null
-//   coords: CityCoords | null
-//   currentCity: string
-// }
 
 export const useWeather = () => {
   const data = ref<ForecastResponse | null>(null)
@@ -24,7 +17,6 @@ export const useWeather = () => {
     error.value = null
 
     try {
-      // 1. Получаем координаты города
       const coordsResponse = await getCoordsByCity(city)
       if (!coordsResponse.results?.[0]) {
         error.value = `Город "${city}" не найден`
@@ -34,7 +26,6 @@ export const useWeather = () => {
 
       coords.value = coordsResponse.results[0]
 
-      // 2. Получаем погоду по координатам
       data.value = await getWeatherByCoords(
         coordsResponse.results[0].latitude,
         coordsResponse.results[0].longitude,
