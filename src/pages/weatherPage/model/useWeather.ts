@@ -2,6 +2,7 @@ import { ref, onMounted } from 'vue'
 import { getCoordsByCity } from '@/pages/weatherPage/api/geocoding.api'
 import { getWeatherByCoords } from '@/pages/weatherPage/api/forecast.api'
 import { weatherConfig } from '@/shared/config'
+import type { ForecastResponse } from '../api/forecast.types.ts'
 // import type { WeatherResponse, CityCoords } from './useWeather.types'
 
 // interface WeatherState {
@@ -11,7 +12,7 @@ import { weatherConfig } from '@/shared/config'
 // }
 
 export const useWeather = () => {
-  const data = ref(null)
+  const data = ref<ForecastResponse | null>(null)
   const coords = ref(null)
   const currentCity = ref(weatherConfig.defaultCity)
   const loading = ref(false)

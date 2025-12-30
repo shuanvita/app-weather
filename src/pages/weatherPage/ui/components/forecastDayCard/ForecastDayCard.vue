@@ -2,7 +2,7 @@
 import type { ForecastDayCard } from './forecastDayCard.types.ts'
 import { getWeatherIcon } from '@/shared/config/weatherConfig.ts'
 
-const { dayWeek, weatherCode, temp, isActive } = defineProps<ForecastDayCard>()
+const { dayWeek, weatherIconCode, temperature, isActive } = defineProps<ForecastDayCard>()
 </script>
 
 <template>
@@ -12,12 +12,8 @@ const { dayWeek, weatherCode, temp, isActive } = defineProps<ForecastDayCard>()
       isActive ? 'cursor-not-allowed bg-primary' : 'bg-card-weather cursor-pointer',
     ]"
   >
-    <div>{{ dayWeek || 'Sun' }}</div>
-    <img
-      class="max-w-17.5"
-      :src="getWeatherIcon(weatherCode) || '/images/light-rain-day.png'"
-      alt="Weather"
-    />
-    <div>{{ temp || '32' }}°</div>
+    <div>{{ dayWeek }}</div>
+    <img class="max-w-17.5" :src="getWeatherIcon(weatherIconCode)" alt="Weather Icon" />
+    <div>{{ temperature }}°</div>
   </button>
 </template>

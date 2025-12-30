@@ -17,10 +17,6 @@ const emit = defineEmits<{
 
 <template>
   <div class="weather-panel">
-    <ForecastWeek
-      :forecast="data"
-      :activeDayIndex="activeDayIndex"
-      @click-day="emit('click-day', $event)"
-    />
+    <ForecastWeek :activeDayIndex="activeDayIndex" @click-day="emit('click-day', $event)" />
   </div>
 </template>
