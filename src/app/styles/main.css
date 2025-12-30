@@ -7,7 +7,7 @@
     --font-size-base: 17px;
     --line-height-base: 2.12;
 
-    --color-bg-body: #191B1F;
+    --color-primary: #191b1f;
     --color-text-body: #ffffff;
     --color-bg-card: #242731;
     --color-border: #374151;
@@ -20,7 +20,7 @@
   }
 
   :root[data-theme="light"] {
-    --color-bg-body: #ffffff;
+    --color-primary: #f5f5f5;
     --color-text-body: #111827;
     --color-bg-card: #f9fafb;
     --color-border: #e5e7eb;
@@ -28,17 +28,19 @@
 }
 
 @theme {
-  --color-primary: #3b82f6;
+  --color-primary: #191b1f;
   --color-primary-50: #eff6ff;
   --color-secondary: #10b981;
   --color-accent: #f59e0b;
+  --color-card-weather: rgba(37, 34, 34, 0.65);
+  --color-card-weather-hover: rgba(37, 34, 34);
 }
 
 body {
   @apply p-3.75 font-medium;
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
-  background-color: var(--color-bg-body);
+  background-color: var(--color-primary);
   color: var(--color-text-body);
 }
 
