@@ -21,6 +21,15 @@ const getUvRiskColor = (riskText: string): string => {
       return 'text-gray-600'
   }
 }
+
+const getCloudCoverText = (cloudCover: number): string => {
+  if (cloudCover <= 10) return 'Clear' // Ясное
+  if (cloudCover <= 30) return 'Sunny' // Солнечно
+  if (cloudCover <= 50) return 'Partly Cloudy' // Переменная облачность
+  if (cloudCover <= 70) return 'Cloudy' // Облачно
+  if (cloudCover <= 90) return 'Overcast' // Пасмурно
+  return 'Very Cloudy' // Сплошная облачность
+}
 const uvRiskText = computed(() => {
   const uv = data?.value.uvIndex
   if (uv === undefined || uv <= 2) return 'Good'
@@ -30,6 +39,26 @@ const uvRiskText = computed(() => {
   return 'Extreme'
 })
 
+const getPressureText = (pressure: number): string => {
+  if (pressure < 1000) return 'Low'
+  if (pressure > 1020) return 'High'
+  return 'Normal' // 1000-1020
+}
+
+const getPressureColor = (pressure: number): string => {
+  const text = getPressureText(pressure)
+  switch (text) {
+    case 'Low':
+      return 'text-orange-600' // Низкое — оранжевый (циклон)
+    case 'Normal':
+      return 'text-green-600' // Норма — зелёный
+    case 'High':
+      return 'text-blue-600' // Высокое — синий (антициклон)
+    default:
+      return 'text-gray-600'
+  }
+}
+
 const overviewCardsData = computed(() => {
   const weather = data?.value
   if (!weather) return []
@@ -38,7 +67,7 @@ const overviewCardsData = computed(() => {
     {
       title: 'Cloud Cover',
       value: weather.cloudCover,
-      text: uvRiskText.value,
+      text: getCloudCoverText(weather.cloudCover),
       image: '/images/cloudy.png',
     },
     {
@@ -50,7 +79,7 @@ const overviewCardsData = computed(() => {
     {
       title: 'Pressure (hpa)',
       value: data?.value.pressure,
-      text: 'Normal',
+      text: getPressureText(data?.value.pressure),
       image: '/images/barometer.png',
     },
   ]

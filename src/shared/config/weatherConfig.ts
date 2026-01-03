@@ -35,11 +35,13 @@ export const getWeatherIcon = (wmoCode: number): string => {
     80: '/images/light-rain.png', // 🌦️ Ливни слабые
     81: '/images/rain.png',
     82: '/images/heavy-rain.png',
+    85: '/images/light-snow.png',
 
     // Снег
     71: '/images/snow.png', // ❄️ Снег слабый
     73: '/images/snow.png',
     75: '/images/snow.png',
+    77: '/images/snow.png',
 
     // Гроза
     95: '/images/thunderstorm.png', // ⛈️ Гроза
