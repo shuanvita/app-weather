@@ -1,6 +1,8 @@
 export const weatherConfig = {
   baseUrl: import.meta.env.VITE_WEATHER_BASE_URL || 'https://api.open-meteo.com/v1/',
   geoUrl: import.meta.env.VITE_WEATHER_GEO_URL || 'https://geocoding-api.open-meteo.com/v1/',
+  airQualityUrl:
+    import.meta.env.VITE_WEATHER_AIR_QUALITY_URL || 'https://air-quality-api.open-meteo.com/v1/',
   defaultCity: 'Moscow',
   defaultDays: 7,
 }
