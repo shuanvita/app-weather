@@ -18,6 +18,9 @@ export const useNormalizeData = (activeDayIndex: Ref<number>) => {
         temperature: daily.temperature_2m_mean[idx],
       })),
       temperature: daily.temperature_2m_mean[activeDayIndex.value],
+      uvIndex: daily.uv_index_max[activeDayIndex.value],
+      pressure: daily.pressure_msl_mean[activeDayIndex.value],
+      cloudCover: daily.cloud_cover_mean[activeDayIndex.value],
     }
   })
 

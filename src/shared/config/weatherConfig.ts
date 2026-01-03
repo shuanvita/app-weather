@@ -1,6 +1,8 @@
 export const weatherConfig = {
   baseUrl: import.meta.env.VITE_WEATHER_BASE_URL || 'https://api.open-meteo.com/v1/',
   geoUrl: import.meta.env.VITE_WEATHER_GEO_URL || 'https://geocoding-api.open-meteo.com/v1/',
+  airQualityUrl:
+    import.meta.env.VITE_WEATHER_AIR_QUALITY_URL || 'https://air-quality-api.open-meteo.com/v1/',
   defaultCity: 'Moscow',
   defaultDays: 7,
 }
@@ -33,11 +35,13 @@ export const getWeatherIcon = (wmoCode: number): string => {
     80: '/images/light-rain.png', // 🌦️ Ливни слабые
     81: '/images/rain.png',
     82: '/images/heavy-rain.png',
+    85: '/images/light-snow.png',
 
     // Снег
     71: '/images/snow.png', // ❄️ Снег слабый
     73: '/images/snow.png',
     75: '/images/snow.png',
+    77: '/images/snow.png',
 
     // Гроза
     95: '/images/thunderstorm.png', // ⛈️ Гроза

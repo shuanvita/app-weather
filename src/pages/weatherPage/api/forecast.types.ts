@@ -5,5 +5,8 @@ export interface ForecastResponse {
     temperature_2m_mean: number[]
     time: string[]
     weather_code: number[]
+    uv_index_max: number[]
+    pressure_msl_mean: number[]
+    cloud_cover_mean: number[]
   }
 }
