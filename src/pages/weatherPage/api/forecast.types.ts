@@ -9,4 +9,8 @@ export interface ForecastResponse {
     pressure_msl_mean: number[]
     cloud_cover_mean: number[]
   }
+  hourly: {
+    precipitation_probability: number[]
+    time: string[]
+  }
 }
