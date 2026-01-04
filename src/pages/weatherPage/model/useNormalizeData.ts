@@ -7,8 +7,22 @@ export const useNormalizeData = (activeDayIndex: Ref<number>) => {
 
   const normalizeWeatherData = computed<NormalizeWeatherTypes>(() => {
     const daily = data.value?.daily
+    const hourly = data.value?.hourly
+
     if (!daily) {
-      return { forecastDays: [], temperature: undefined }
+      return { forecastDays: [], temperature: undefined, precipitation: { time: [], values: [] } }
+    }
+
+    const now = new Date()
+    const currentHourUTC = now.getUTCHours()
+
+    const dayOffset = activeDayIndex.value * 24
+    const startHour = dayOffset + currentHourUTC
+    const endHour = startHour + 7
+
+    const precipData = {
+      time: hourly?.time.slice(startHour, endHour),
+      values: hourly?.precipitation_probability.slice(startHour, endHour),
     }
 
     return {
@@ -21,6 +35,9 @@ export const useNormalizeData = (activeDayIndex: Ref<number>) => {
       uvIndex: daily.uv_index_max[activeDayIndex.value],
       pressure: daily.pressure_msl_mean[activeDayIndex.value],
       cloudCover: daily.cloud_cover_mean[activeDayIndex.value],
+      sunrise: daily.sunrise[activeDayIndex.value],
+      sunset: daily.sunset[activeDayIndex.value],
+      precipitation: precipData,
     }
   })
 
