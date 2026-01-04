@@ -8,6 +8,8 @@ export interface ForecastResponse {
     uv_index_max: number[]
     pressure_msl_mean: number[]
     cloud_cover_mean: number[]
+    sunrise: string[]
+    sunset: string[]
   }
   hourly: {
     precipitation_probability: number[]

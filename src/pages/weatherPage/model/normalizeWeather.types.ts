@@ -4,6 +4,8 @@ export interface NormalizeWeatherTypes {
   cloudCover?: number | undefined
   uvIndex?: number | undefined
   pressure?: number | undefined
+  sunrise?: string | undefined
+  sunset?: string | undefined
   precipitation?: PrecipitationTypes
 }
 

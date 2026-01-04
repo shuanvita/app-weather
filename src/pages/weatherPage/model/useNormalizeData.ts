@@ -35,6 +35,8 @@ export const useNormalizeData = (activeDayIndex: Ref<number>) => {
       uvIndex: daily.uv_index_max[activeDayIndex.value],
       pressure: daily.pressure_msl_mean[activeDayIndex.value],
       cloudCover: daily.cloud_cover_mean[activeDayIndex.value],
+      sunrise: daily.sunrise[activeDayIndex.value],
+      sunset: daily.sunset[activeDayIndex.value],
       precipitation: precipData,
     }
   })
