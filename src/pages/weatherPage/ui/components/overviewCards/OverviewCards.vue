@@ -3,7 +3,7 @@ import { computed, type ComputedRef, inject } from 'vue'
 import OverviewCard from '@/pages/weatherPage/ui/components/overviewCard/OverviewCard.vue'
 import type { NormalizeWeatherTypes } from '@/pages/weatherPage/model/normalizeWeather.types.ts'
 
-const data = inject<ComputedRef<NormalizeWeatherTypes> | null>('normalizeWeatherData', null)
+const { data } = inject<ComputedRef<NormalizeWeatherTypes> | null>('weatherContext', null)
 
 const getUvRiskColor = (riskText: string): string => {
   switch (riskText) {

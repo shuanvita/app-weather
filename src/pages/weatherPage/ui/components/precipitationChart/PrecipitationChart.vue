@@ -3,17 +3,14 @@ import { type ComputedRef, inject, ref, watch, onMounted } from 'vue'
 import Chart from 'chart.js/auto' // Авто-регистрация
 import type { NormalizeWeatherTypes } from '@/pages/weatherPage/model/normalizeWeather.types.ts'
 
-const normalizeData = inject<ComputedRef<NormalizeWeatherTypes> | null>(
-  'normalizeWeatherData',
-  null,
-)
+const { data } = inject<ComputedRef<NormalizeWeatherTypes> | null>('weatherContext', null)
 const chartRef = ref<HTMLCanvasElement>()
 let chart: any = null
 
 const createChart = () => {
-  if (!chartRef.value || !normalizeData?.value?.precipitation?.time?.length) return
+  if (!chartRef.value || !data?.value?.precipitation?.time?.length) return
 
-  const precipData = normalizeData.value.precipitation!
+  const precipData = data.value.precipitation!
   const labels = precipData.time?.map((time: string) => {
     const hour = parseInt(time.slice(11, 13))
     return hour === 0 ? '12AM' : hour === 12 ? '12PM' : hour > 12 ? `${hour - 12}PM` : `${hour}AM`
@@ -106,7 +103,7 @@ const createChart = () => {
 }
 
 onMounted(createChart)
-watch(() => normalizeData?.value, createChart, { deep: true })
+watch(() => data?.value, createChart, { deep: true })
 </script>
 
 <template>
