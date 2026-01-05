@@ -13,7 +13,7 @@ const { activeDayIndex } = defineProps({
   },
 })
 
-const data = inject<NormalizeWeatherTypes>('normalizeWeatherData')
+const { data } = inject<NormalizeWeatherTypes>('weatherContext')
 </script>
 
 <template>

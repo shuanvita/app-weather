@@ -1,17 +1,22 @@
 <script setup lang="ts">
-import { provide, ref } from 'vue'
+import { provide, readonly, ref } from 'vue'
 import { useNormalizeData } from '@/pages/weatherPage/model'
 import CurrentWeather from '@/pages/weatherPage/ui/components/CurrentWeather.vue'
 import DetailsWeather from '@/pages/weatherPage/ui/components/DetailsWeather.vue'
 
 const activeDayIndex = ref(0)
-const { normalizeWeatherData } = useNormalizeData(activeDayIndex)
+const { normalizeWeatherData, load, currentCity } = useNormalizeData(activeDayIndex)
 
 const onDayClick = (index: number) => {
   activeDayIndex.value = index
 }
 
-provide('normalizeWeatherData', normalizeWeatherData)
+provide('weatherContext', {
+  data: readonly(normalizeWeatherData),
+  load,
+  currentCity: readonly(currentCity),
+  activeDayIndex: readonly(activeDayIndex),
+})
 </script>
 
 <template>

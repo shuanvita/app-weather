@@ -11,8 +11,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    VInput: typeof import('./src/shared/ui/vInput/VInput.vue')['default']
+    VInput: typeof import('./src/shared/ui/VInput/VInput.vue')['default']
     VSvg: typeof import('./src/shared/ui/VSvg/VSvg.vue')['default']
-    VTabs: typeof import('./src/shared/ui/VTabs/VTabs.vue')['default']
   }
 }
