@@ -7,6 +7,8 @@ export interface NormalizeWeatherTypes {
   sunrise?: string | undefined
   sunset?: string | undefined
   precipitation?: PrecipitationTypes
+  maxTemperature?: number | undefined
+  minTemperature?: number | undefined
 }
 
 export interface ForecastDayItem {

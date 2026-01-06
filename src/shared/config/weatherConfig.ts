@@ -7,50 +7,199 @@ export const weatherConfig = {
   defaultDays: 7,
 }
 
-export const getWeatherIcon = (wmoCode: number): string => {
-  const iconMap: Record<number, string> = {
-    // Ясно (день/ночь)
-    0: '/images/clear-day.png', // ☀️ Ясно день
-    1: '/images/clear-night.png', // 🌙 Ясно ночь
+// TODO вынести из конфига, все что ниже
 
-    // Облачность
-    2: '/images/partly-cloudy.png', // ⛅ Частично облачно
-    3: '/images/cloudy.png', // ☁️ Облачно
+interface WeatherIcon {
+  icon: string
+  svg: string
+  text: string
+}
 
-    // Туман
-    45: '/images/fog.png', // 🌫️ Туман
-    48: '/images/fog.png', // Изморозь → туман
+type WeatherType = 'image' | 'svg'
 
-    // Морось
-    51: '/images/light-rain.png', // 🌦️ Морось слабая
-    53: '/images/light-rain.png',
-    55: '/images/light-rain.png',
+const iconMap: Record<
+  number,
+  {
+    image: string
+    svg: string
+    text: string
+  }
+> = {
+  // Ясно (день/ночь)
+  0: {
+    image: '/images/clear-day.png',
+    svg: '/icons/clear-day.svg',
+    text: 'Ясно',
+  },
+  1: {
+    image: '/images/clear-night.png',
+    svg: '/icons/clear-night.svg',
+    text: 'Ясно',
+  },
 
-    // Дождь
-    61: '/images/rain.png', // 🌧️ Дождь слабый
-    63: '/images/heavy-rain.png', // 🌧️ Дождь сильный
-    65: '/images/heavy-rain.png',
+  // Облачность
+  2: {
+    image: '/images/partly-cloudy.png',
+    svg: '/icons/partly-cloudy.svg',
+    text: 'Частично облачно',
+  },
+  3: {
+    image: '/images/cloudy.png',
+    svg: '/icons/cloudy.svg',
+    text: 'Облачно',
+  },
 
-    // Ливни
-    80: '/images/light-rain.png', // 🌦️ Ливни слабые
-    81: '/images/rain.png',
-    82: '/images/heavy-rain.png',
-    85: '/images/light-snow.png',
+  // Туман
+  45: {
+    image: '/images/fog.png',
+    svg: '/icons/fog.svg',
+    text: 'Туман',
+  },
+  48: {
+    image: '/images/fog.png',
+    svg: '/icons/fog.svg',
+    text: 'Туман',
+  },
 
-    // Снег
-    71: '/images/snow.png', // ❄️ Снег слабый
-    73: '/images/snow.png',
-    75: '/images/snow.png',
-    77: '/images/snow.png',
+  // Морось
+  51: {
+    image: '/images/drizzle.png',
+    svg: '/icons/drizzle.svg',
+    text: 'Морось (слабая)',
+  },
+  53: {
+    image: '/images/drizzle.png',
+    svg: '/icons/drizzle.svg',
+    text: 'Морось (умеренная)',
+  },
+  55: {
+    image: '/images/drizzle.png',
+    svg: '/icons/drizzle.svg',
+    text: 'Морось (сильная)',
+  },
+  56: {
+    image: '/images/drizzle.png',
+    svg: '/icons/drizzle.svg',
+    text: 'Морось со льдом',
+  },
+  57: {
+    image: '/images/drizzle.png',
+    svg: '/icons/drizzle.svg',
+    text: 'Морось со льдом',
+  },
 
-    // Гроза
-    95: '/images/thunderstorm.png', // ⛈️ Гроза
-    96: '/images/thunderstorm.png',
-    99: '/images/thunderstorm.png',
+  // Дождь
+  61: {
+    image: '/images/light-rain.png',
+    svg: '/icons/light-rain.svg',
+    text: 'Дождь (слабый)',
+  },
+  63: {
+    image: '/images/rain.png',
+    svg: '/icons/rain.svg',
+    text: 'Дождь (умеренный)',
+  },
+  65: {
+    image: '/images/heavy-rain.png',
+    svg: '/icons/heavy-rain.svg',
+    text: 'Дождь (сильный)',
+  },
+  66: {
+    image: '/images/sleet.png',
+    svg: '/icons/sleet.svg',
+    text: 'Ледяной дождь',
+  },
+  67: {
+    image: '/images/sleet.png',
+    svg: '/icons/sleet.svg',
+    text: 'Ледяной дождь',
+  },
 
-    // Ветер (fallback)
-    // wind-day.png, wind-night.png если нужны
+  // Снег
+  71: {
+    image: '/images/light-snow.png',
+    svg: 'outline/light-snow',
+    text: 'Снег (слабый)',
+  },
+  73: {
+    image: '/images/snow.png',
+    svg: 'outline/snow',
+    text: 'Снег (умеренный)',
+  },
+  75: {
+    image: '/images/heavy-snow.png',
+    svg: '/icons/heavy-snow.svg',
+    text: 'Снег (сильный)',
+  },
+  77: {
+    image: '/images/snow.png',
+    svg: '/icons/snow.svg',
+    text: 'Снежные крупинки',
+  },
+
+  // Ливни (80–86)
+  80: {
+    image: '/images/showers.png',
+    svg: '/icons/showers.svg',
+    text: 'Ливни (слабые)',
+  },
+  81: {
+    image: '/images/showers.png',
+    svg: '/icons/showers.svg',
+    text: 'Ливни (умеренные)',
+  },
+  82: {
+    image: '/images/heavy-showers.png',
+    svg: '/icons/heavy-showers.svg',
+    text: 'Ливни (сильные)',
+  },
+  85: {
+    image: '/images/snow-showers.png',
+    svg: '/icons/snow-showers.svg',
+    text: 'Снежные ливни (слабые)',
+  },
+  86: {
+    image: '/images/snow-showers.png',
+    svg: '/icons/snow-showers.svg',
+    text: 'Снежные ливни (сильные)',
+  },
+
+  // Грозы (95–99)
+  95: {
+    image: '/images/thunderstorm.png',
+    svg: '/icons/thunderstorm.svg',
+    text: 'Гроза',
+  },
+  96: {
+    image: '/images/thunderstorm-hail.png',
+    svg: '/icons/thunderstorm-hail.svg',
+    text: 'Гроза с градом',
+  },
+  99: {
+    image: '/images/thunderstorm-hail.png',
+    svg: '/icons/thunderstorm-hail.svg',
+    text: 'Гроза с градом',
+  },
+}
+
+const defaultIcon: WeatherIcon = {
+  icon: '/images/cloudy.png',
+  svg: '/icons/cloudy.svg',
+  text: 'Облачно',
+}
+
+export const getWeatherIcon = (wmoCode: number, type: WeatherType = 'image'): WeatherIcon => {
+  const config = iconMap[wmoCode]
+
+  if (!config) {
+    return defaultIcon
   }
 
-  return iconMap[wmoCode] || '/images/weather/cloudy.png' // cloudy как fallback
+  const icon = type === 'svg' ? config.svg : config.image
+
+  return {
+    icon,
+    svg: config.svg,
+    text: config.text,
+  }
 }

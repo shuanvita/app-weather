@@ -40,6 +40,8 @@ export const useNormalizeData = (activeDayIndex: Ref<number>) => {
       precipitation: precipData,
       currentDayWeek: daily.time[activeDayIndex.value],
       currentIconCode: daily.weather_code[activeDayIndex.value],
+      maxTemperature: daily.temperature_2m_max[activeDayIndex.value],
+      minTemperature: daily.temperature_2m_min[activeDayIndex.value],
     }
   })
 
