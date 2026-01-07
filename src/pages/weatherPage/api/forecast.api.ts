@@ -12,7 +12,7 @@ export const getWeatherByCoords = (
       latitude,
       longitude,
       daily:
-        'temperature_2m_max,temperature_2m_min,temperature_2m_mean,weather_code,uv_index_max,pressure_msl_mean,cloud_cover_mean,sunrise,sunset',
+        'temperature_2m_max,temperature_2m_min,temperature_2m_mean,weather_code,uv_index_max,pressure_msl_mean,cloud_cover_mean,sunrise,sunset,relative_humidity_2m_mean,wind_speed_10m_mean',
       hourly: 'precipitation_probability',
       forecast_days: 7,
       timezone: 'Europe/Moscow',

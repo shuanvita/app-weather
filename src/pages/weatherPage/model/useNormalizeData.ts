@@ -42,6 +42,8 @@ export const useNormalizeData = (activeDayIndex: Ref<number>) => {
       currentIconCode: daily.weather_code[activeDayIndex.value],
       maxTemperature: daily.temperature_2m_max[activeDayIndex.value],
       minTemperature: daily.temperature_2m_min[activeDayIndex.value],
+      humidity: daily.relative_humidity_2m_mean[activeDayIndex.value],
+      windSpeed: daily.wind_speed_10m_mean[activeDayIndex.value],
     }
   })
 

@@ -9,6 +9,8 @@ export interface NormalizeWeatherTypes {
   precipitation?: PrecipitationTypes
   maxTemperature?: number | undefined
   minTemperature?: number | undefined
+  humidity?: number | undefined
+  windSpeed?: number | undefined
 }
 
 export interface ForecastDayItem {
