@@ -3,6 +3,8 @@ import { inject, ref } from 'vue'
 import type { NormalizeWeatherTypes } from '@/pages/weatherPage/model/normalizeWeather.types.ts'
 import VInput from '@/shared/ui/VInput/VInput.vue'
 import WeatherToday from '@/pages/weatherPage/ui/components/weatherToday/WeatherToday.vue'
+import WeatherConditions from '@/pages/weatherPage/ui/components/weatherConditions/WeatherConditions.vue'
+import WeatherTodayDetails from '@/pages/weatherPage/ui/components/weatherTodayDetails/WeatherTodayDetails.vue'
 
 const { data, load, currentCity } = inject<NormalizeWeatherTypes>('weatherContext')
 
@@ -25,5 +27,7 @@ const handleSearch = () => {
       @click-search="handleSearch"
     />
     <WeatherToday />
+    <WeatherConditions />
+    <WeatherTodayDetails />
   </div>
 </template>

@@ -14,7 +14,7 @@ const { dayWeek, weatherIconCode, temperature, isActive } = defineProps<Forecast
     ]"
   >
     <div>{{ dayWeek }}</div>
-    <img class="max-w-17.5" :src="getWeatherIcon(weatherIconCode)" alt="Weather Icon" />
+    <img class="max-w-17.5" :src="getWeatherIcon(weatherIconCode).icon" alt="Weather Icon" />
     <div>{{ temperature }}°</div>
   </button>
 </template>

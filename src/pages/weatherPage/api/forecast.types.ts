@@ -10,6 +10,8 @@ export interface ForecastResponse {
     cloud_cover_mean: number[]
     sunrise: string[]
     sunset: string[]
+    relative_humidity_2m_mean: number[]
+    wind_speed_10m_mean: number[]
   }
   hourly: {
     precipitation_probability: number[]
