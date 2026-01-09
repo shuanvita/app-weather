@@ -3,6 +3,8 @@ import ForecastWeek from '@/pages/weatherPage/ui/components/forecastWeek/Forecas
 import OverviewCards from '@/pages/weatherPage/ui/components/overviewCards/OverviewCards.vue'
 import PrecipitationChart from '@/pages/weatherPage/ui/components/precipitationChart/PrecipitationChart.vue'
 import SunriseSunset from '@/pages/weatherPage/ui/components/sunriseSunset/SunriseSunset.vue'
+import UiTabs from '@/shared/ui/uiTabs/UiTabs.vue'
+import { computed } from 'vue'
 
 const { activeDayIndex } = defineProps({
   activeDayIndex: {
@@ -13,11 +15,35 @@ const { activeDayIndex } = defineProps({
 const emit = defineEmits<{
   'click-day': [index: number]
 }>()
+
+const tabs = computed(() => {
+  return [
+    {
+      label: 'Today',
+      component: SunriseSunset,
+    },
+    {
+      label: 'Week',
+      component: ForecastWeek,
+      props: { activeDayIndex },
+      on: { 'click-day': (idx: number) => emit('click-day', idx) },
+    },
+  ]
+})
 </script>
 
 <template>
   <div class="weather-panel space-y-12">
-    <ForecastWeek :activeDayIndex="activeDayIndex" @click-day="emit('click-day', $event)" />
+    <ui-tabs :tabs="tabs">
+      <!--      <template #default="{ activeTabIndex }">-->
+      <!--        <ForecastWeek-->
+      <!--          v-show="activeTabIndex === 1"-->
+      <!--          :activeDayIndex="activeDayIndex"-->
+      <!--          @click-day="emit('click-day', $event)"-->
+      <!--        />-->
+      <!--      </template>-->
+    </ui-tabs>
+    <!--    <ForecastWeek :activeDayIndex="activeDayIndex" @click-day="emit('click-day', $event)" />-->
     <h2 class="text-[24px] font-semibold">Today’s Overview</h2>
     <OverviewCards />
     <div class="grid grid-cols-[556px_1fr] gap-5">
