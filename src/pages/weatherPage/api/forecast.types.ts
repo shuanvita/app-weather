@@ -12,6 +12,7 @@ export interface ForecastResponse {
     sunset: string[]
     relative_humidity_2m_mean: number[]
     wind_speed_10m_mean: number[]
+    visibility_mean: number[]
   }
   hourly: {
     precipitation_probability: number[]

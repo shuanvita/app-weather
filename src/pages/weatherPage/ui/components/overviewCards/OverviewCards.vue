@@ -64,6 +64,7 @@ const overviewCardsData = computed(() => {
   if (!weather) return []
 
   return [
+    // TODO Вместо Cloud Cover должен быть Air Quality Index
     {
       title: 'Cloud Cover',
       value: weather.cloudCover,

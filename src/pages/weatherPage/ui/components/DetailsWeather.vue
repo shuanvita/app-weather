@@ -5,6 +5,7 @@ import PrecipitationChart from '@/pages/weatherPage/ui/components/precipitationC
 import SunriseSunset from '@/pages/weatherPage/ui/components/sunriseSunset/SunriseSunset.vue'
 import UiTabs from '@/shared/ui/uiTabs/UiTabs.vue'
 import { computed } from 'vue'
+import TodayOverviewCards from '@/pages/weatherPage/ui/components/todayOverviewCards/TodayOverviewCards.vue'
 
 const { activeDayIndex } = defineProps({
   activeDayIndex: {
@@ -20,7 +21,7 @@ const tabs = computed(() => {
   return [
     {
       label: 'Today',
-      component: SunriseSunset,
+      component: TodayOverviewCards,
     },
     {
       label: 'Week',
