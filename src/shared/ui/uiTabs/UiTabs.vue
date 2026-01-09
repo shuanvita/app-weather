@@ -6,10 +6,11 @@ const { tabs } = defineProps<{
   tabs?: UiTabsItem[]
 }>()
 
-const activeTabIndex = ref(0)
+const activeTabIndex = ref(1)
 
 const emit = defineEmits<{
-  'update:activeTabIndex': [index: number]
+  'update:activeTabIndex': [index: number],
+  'click-day': [index: number]
 }>()
 
 const handleTabClick = (idx: number) => {
@@ -42,7 +43,8 @@ const hasDynamicContent = computed(() => tabs?.[activeTabIndex.value]?.component
         v-if="hasDynamicContent"
         :is="tabs![activeTabIndex]?.component!"
         v-bind="tabs![activeTabIndex]?.props || {}"
-        :on="tabs![activeTabIndex]?.on"
+        v-on="tabs![activeTabIndex]?.on"
+        @click-day="emit('click-day', $event)"
       />
       <slot v-else :activeTabIndex="activeTabIndex" />
     </div>

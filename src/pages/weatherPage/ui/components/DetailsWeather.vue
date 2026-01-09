@@ -26,7 +26,6 @@ const tabs = computed(() => {
       label: 'Week',
       component: ForecastWeek,
       props: { activeDayIndex },
-      on: { 'click-day': (idx: number) => emit('click-day', idx) },
     },
   ]
 })
@@ -34,7 +33,7 @@ const tabs = computed(() => {
 
 <template>
   <div class="weather-panel space-y-12">
-    <ui-tabs :tabs="tabs">
+    <ui-tabs :tabs="tabs" @click-day="emit('click-day', $event)">
       <!--      <template #default="{ activeTabIndex }">-->
       <!--        <ForecastWeek-->
       <!--          v-show="activeTabIndex === 1"-->

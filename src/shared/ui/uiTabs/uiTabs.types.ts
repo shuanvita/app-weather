@@ -4,5 +4,5 @@ export interface UiTabsItem {
   label: string
   component?: Component
   props?: Record<string, unknown>
-  on?: Record<string, (event: unknown) => void>
+  on?: Record<string, (...args: unknown[]) => void>
 }
