@@ -47,7 +47,7 @@ const hasDynamicContent = computed(() => tabs?.[activeTabIndex.value]?.component
         v-if="hasDynamicContent"
         :is="tabs![activeTabIndex]?.component!"
         v-bind="tabs![activeTabIndex]?.props || {}"
-        v-on="tabs![activeTabIndex]?.on"
+        v-on="tabs![activeTabIndex]?.on || {}"
         @click-day="emit('click-day', $event)"
       />
       <slot v-else :activeTabIndex="activeTabIndex" />
