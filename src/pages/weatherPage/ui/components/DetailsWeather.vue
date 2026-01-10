@@ -6,6 +6,7 @@ import SunriseSunset from '@/pages/weatherPage/ui/components/sunriseSunset/Sunri
 import UiTabs from '@/shared/ui/uiTabs/UiTabs.vue'
 import { computed } from 'vue'
 import TodayOverviewCards from '@/pages/weatherPage/ui/components/todayOverviewCards/TodayOverviewCards.vue'
+import { ThemeSwitcher } from '@/features/theme-switcher'
 
 const { activeDayIndex } = defineProps({
   activeDayIndex: {
@@ -34,16 +35,7 @@ const tabs = computed(() => {
 
 <template>
   <div class="weather-panel space-y-12">
-    <ui-tabs :tabs="tabs" @click-day="emit('click-day', $event)">
-      <!--      <template #default="{ activeTabIndex }">-->
-      <!--        <ForecastWeek-->
-      <!--          v-show="activeTabIndex === 1"-->
-      <!--          :activeDayIndex="activeDayIndex"-->
-      <!--          @click-day="emit('click-day', $event)"-->
-      <!--        />-->
-      <!--      </template>-->
-    </ui-tabs>
-    <!--    <ForecastWeek :activeDayIndex="activeDayIndex" @click-day="emit('click-day', $event)" />-->
+    <ui-tabs :tabs="tabs" @click-day="emit('click-day', $event)" />
     <h2 class="text-[24px] font-semibold">Today’s Overview</h2>
     <OverviewCards />
     <div class="grid grid-cols-[556px_1fr] gap-5">
