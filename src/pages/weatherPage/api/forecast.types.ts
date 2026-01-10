@@ -19,3 +19,8 @@ export interface ForecastResponse {
     time: string[]
   }
 }
+
+export interface Coords {
+  latitude: number
+  longitude: number
+}
