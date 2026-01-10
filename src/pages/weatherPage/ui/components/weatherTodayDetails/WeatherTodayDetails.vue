@@ -25,9 +25,9 @@ const weatherDetailsData = computed(() => {
     class="flex items-center gap-8 p-4 bg-card-weather rounded-xl border border-black/10 shadow-[2px_4px_5px_0_rgba(0,0,0,0.25)]"
   >
     <div
-      class="flex items-center gap-2 text-white"
+      class="flex items-center gap-2 text-body"
       v-for="(item, idx) in weatherDetailsData"
-      :key="`weather-deatil-item-${idx}`"
+      :key="`weather-detail-item-${idx}`"
     >
       <v-svg :name="item.icon" size="48" />
       <div class="leading-none">

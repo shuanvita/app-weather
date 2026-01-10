@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { UiTabsItem } from './uiTabs.types'
 import { computed, ref } from 'vue'
+import { ThemeSwitcher } from '@/features/themeSwitcher'
 
 const { tabs } = defineProps<{
   tabs?: UiTabsItem[]
@@ -9,7 +10,7 @@ const { tabs } = defineProps<{
 const activeTabIndex = ref(1)
 
 const emit = defineEmits<{
-  'update:activeTabIndex': [index: number],
+  'update:activeTabIndex': [index: number]
   'click-day': [index: number]
 }>()
 
@@ -23,21 +24,24 @@ const hasDynamicContent = computed(() => tabs?.[activeTabIndex.value]?.component
 
 <template>
   <div v-if="tabs?.length">
-    <nav class="flex gap-6 text-[24px] font-semibold mb-16">
-      <button
-        v-for="(item, idx) of tabs"
-        :key="`tab-item-${idx}`"
-        :class="[
-          'cursor-pointer hover:text-white transition-all py-2',
-          activeTabIndex === idx
-            ? 'text-white underline underline-offset-4 decoration-wavy decoration-2'
-            : 'text-white/50 hover:text-white/80',
-        ]"
-        @click="handleTabClick(idx)"
-      >
-        {{ item.label }}
-      </button>
-    </nav>
+    <div class="flex items-center justify-between mb-16">
+      <nav class="flex gap-6 text-[24px] font-semibold">
+        <button
+          v-for="(item, idx) of tabs"
+          :key="`tab-item-${idx}`"
+          :class="[
+            'cursor-pointer hover:text-white transition-all py-2',
+            activeTabIndex === idx
+              ? 'text-white underline underline-offset-4 decoration-wavy decoration-2'
+              : 'text-white/50 hover:text-white/80',
+          ]"
+          @click="handleTabClick(idx)"
+        >
+          {{ item.label }}
+        </button>
+      </nav>
+      <ThemeSwitcher />
+    </div>
     <div>
       <component
         v-if="hasDynamicContent"
