@@ -25,8 +25,6 @@ export const useGeolocationUser = () => {
       const saved = localStorage.getItem(STORAGE_KEY)
       if (saved) {
         const { lat, lng } = JSON.parse(saved)
-        // Можно использовать для быстрого восстановления
-        console.log('Восстановлена локация:', { lat, lng })
       }
     } catch {
       // Игнор ошибок
