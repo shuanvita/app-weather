@@ -1,4 +1,5 @@
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, nextTick } from 'vue'
+import { useLocalStorage } from '@vueuse/core'
 import { getCoordsByCity } from '@/pages/weatherPage/api/geocoding.api'
 import { getWeatherByCoords } from '@/pages/weatherPage/api/forecast.api'
 import { useGeolocationUser } from '@/shared/lib/useGeolocation'
@@ -8,6 +9,9 @@ import type { ForecastResponse, Coords } from '../api/forecast.types.ts'
 export const useWeather = () => {
   const data = ref<ForecastResponse | null>(null)
   const coords = ref<Coords | null>(null)
+  const lastCity = useLocalStorage('weather-last-city', weatherConfig.defaultCity, {
+    initOnMounted: true, // Инициализация строго на клиенте после mounted
+  })
   const currentCity = ref(weatherConfig.defaultCity)
   const loading = ref(false)
   const error = ref<string | null>(null)
@@ -36,8 +40,10 @@ export const useWeather = () => {
       )
       const nomData = await nomResponse.json()
       currentCity.value = nomData.display_name?.split(',')[0] || 'Неизвестное место' // "Khimki"
+      lastCity.value = currentCity.value
     } catch (err) {
       currentCity.value = 'Моя геолокация' // Fallback
+      lastCity.value = currentCity.value
       error.value = err instanceof Error ? err.message : 'Ошибка'
     } finally {
       loading.value = false
@@ -46,6 +52,7 @@ export const useWeather = () => {
 
   const load = async (city: string = weatherConfig.defaultCity) => {
     currentCity.value = city
+    lastCity.value = city
     loading.value = true
     error.value = null
 
@@ -74,6 +81,12 @@ export const useWeather = () => {
 
   const refresh = () => load(currentCity.value)
 
+  watch(lastCity, (newLastCity) => {
+    if (newLastCity && newLastCity !== currentCity.value) {
+    void load(newLastCity)
+    }
+  })
+
   watch(
     () => geo.location.value,
     (newLoc) => {
@@ -93,23 +106,29 @@ export const useWeather = () => {
     { immediate: false }, // immediate: false — ждём первого реального значения
   )
 
-  onMounted(() => {
-    // Ждём 500ms — даём гео инициализироваться
-    setTimeout(() => {
-      const loc = geo.location.value
-      if (
-        loc &&
-        typeof loc === 'object' &&
-        loc.lat !== undefined &&
-        loc.lng !== undefined &&
-        isFinite(loc.lat) &&
-        isFinite(loc.lng)
-      ) {
-        void loadByCoords(loc.lat, loc.lng)
-      } else {
-        void load() // Fallback Москва
-      }
-    }, 500)
+  onMounted(async () => {
+    await nextTick()
+    // ← Автозагрузка последнего города из localStorage
+    if (lastCity.value && lastCity.value !== weatherConfig.defaultCity) {
+      await load(lastCity.value)
+    } else {
+      // Fallback на гео или default
+      setTimeout(() => {
+        const loc = geo.location.value
+        if (
+          loc &&
+          typeof loc === 'object' &&
+          loc.lat !== undefined &&
+          loc.lng !== undefined &&
+          isFinite(loc.lat) &&
+          isFinite(loc.lng)
+        ) {
+          void loadByCoords(loc.lat, loc.lng)
+        } else {
+          void load()
+        }
+      }, 500)
+    }
   })
 
   return {
