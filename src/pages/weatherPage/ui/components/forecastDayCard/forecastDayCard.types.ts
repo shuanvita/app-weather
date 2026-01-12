@@ -1,6 +1,6 @@
 export interface ForecastDayCard {
   dayWeek: string
-  weatherIconCode: number | undefined
-  temperature: number | undefined
+  weatherIconCode: number
+  temperature: number
   isActive?: boolean
 }

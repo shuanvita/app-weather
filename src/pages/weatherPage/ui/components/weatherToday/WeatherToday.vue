@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { inject } from 'vue'
-import { getWeatherIcon } from '@/shared/config/weatherConfig.ts'
+import { getWeatherIcon } from '@/shared/lib/getWeatherIcon.ts'
 
 const { data, currentCity } = inject('weatherContext')
 </script>
 
 <template>
-  <div>
+  <div v-if="data?.currentIconCode && data.temperature !== undefined">
     <div class="flex justify-center">
-      <img class="max-w-79" :src="getWeatherIcon(data.currentIconCode).icon" alt="Weather Icon" />
+      <img
+        class="max-w-79"
+        :src="getWeatherIcon(data.currentIconCode).image"
+        :alt="getWeatherIcon(data.currentIconCode).text"
+      />
     </div>
     <div class="text-[96px] font-bold text-center">{{ Math.round(data.temperature) }}°C</div>
     <div class="flex items-center justify-between text-[25px] pb-5 border-b border-[#C2D4D3]">

@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { computed, inject } from 'vue'
-import { getWeatherIcon } from '@/shared/config/weatherConfig.ts'
+import { getWeatherIcon } from '@/shared/lib/getWeatherIcon.ts'
 
 const { data } = inject('weatherContext')
 
 const weatherConditionsData = computed(() => {
   return [
     {
-      icon: getWeatherIcon(data.value.currentIconCode).svg,
-      text: getWeatherIcon(data.value.currentIconCode).text,
+      // icon: getWeatherIcon(data.value.currentIconCode).svg,
+      // text: getWeatherIcon(data.value.currentIconCode).text,
     },
     {
       icon: 'outline/min-temp',
