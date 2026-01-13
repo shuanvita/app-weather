@@ -20,7 +20,7 @@ provide('weatherContext', {
 </script>
 
 <template>
-  <div v-if="loading" class="animate-pulse">Загрузка...</div>
+  <div v-if="loading" class="animate-pulse">Загрузка погоды...</div>
   <div v-else class="container grid xl:grid-cols-[452px_1fr] gap-5">
     <CurrentWeather />
     <DetailsWeather :active-day-index="activeDayIndex" @click-day="onDayClick" />
