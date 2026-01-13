@@ -24,7 +24,7 @@ const hasDynamicContent = computed(() => tabs?.[activeTabIndex.value]?.component
 
 <template>
   <div v-if="tabs?.length">
-    <div class="flex items-center justify-between mb-16">
+    <div class="flex items-center justify-between mb-12.5">
       <nav class="flex gap-6 text-[24px] font-semibold">
         <button
           v-for="(item, idx) of tabs"

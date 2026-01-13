@@ -59,7 +59,7 @@ body {
 }
 
 :root[data-theme="light"] .weather-panel {
-  border-color: rgba(226, 232, 240, 0.8);
+  border-color: rgba(0, 0, 0, 0.3);
   background: var(--color-bg-card);
   box-shadow: 0 25px 50px -12px rgba(0, 0%, 0%, 0.1);
 }
