@@ -15,11 +15,19 @@ export interface NormalizeWeatherTypes {
 
 export interface ForecastDayItem {
   dayWeek: string
-  weatherIconCode: number | undefined
-  temperature: number | undefined
+  weatherIconCode: number
+  temperature: number
 }
 
 export interface PrecipitationTypes {
   time: string[] | undefined
   values: number[] | undefined
+}
+
+export interface WeatherContext {
+  data: NormalizeWeatherTypes | null
+  load: (city?: string) => Promise<void>
+  currentCity: string
+  activeDayIndex: number
+  loading?: boolean
 }

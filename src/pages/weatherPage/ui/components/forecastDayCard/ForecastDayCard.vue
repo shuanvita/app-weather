@@ -12,12 +12,12 @@ const { dayWeek, weatherIconCode, temperature, isActive } = defineProps<Forecast
       isActive ? 'cursor-not-allowed bg-primary shadow-none' : 'bg-card-weather cursor-pointer',
     ]"
   >
-    <div>{{ dayWeek }}</div>
+    <span>{{ dayWeek }}</span>
     <img
       class="max-w-17.5"
       :src="getWeatherIcon(weatherIconCode).image"
       :alt="getWeatherIcon(weatherIconCode).text"
     />
-    <div>{{ Math.round(temperature) }}°</div>
+    <span>{{ Math.round(temperature) }}°</span>
   </button>
 </template>

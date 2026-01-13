@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { inject } from 'vue'
-import type { NormalizeWeatherTypes } from '@/pages/weatherPage/model/normalizeWeather.types.ts'
+import type { WeatherContext } from '@/pages/weatherPage/model/normalizeWeather.types.ts'
 import ForecastDayCard from '@/pages/weatherPage/ui/components/forecastDayCard/ForecastDayCard.vue'
 
 const emit = defineEmits<{
@@ -13,7 +13,10 @@ const { activeDayIndex } = defineProps({
   },
 })
 
-const { data } = inject<NormalizeWeatherTypes>('weatherContext')
+const context = inject<WeatherContext>('weatherContext')
+if (!context) throw new Error('WeatherContext not provided')
+
+const data = context.data
 </script>
 
 <template>
@@ -27,5 +30,3 @@ const { data } = inject<NormalizeWeatherTypes>('weatherContext')
     />
   </div>
 </template>
-
-<style scoped></style>
