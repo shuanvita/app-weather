@@ -9,7 +9,7 @@ const { title, value, text, image } = defineProps<OverviewCard>()
     <h3 class="text-[17px]/[2.1] font-medium mb-8">{{ title }}</h3>
     <div class="flex gap-3 justify-between">
       <div>
-        <div class="text-[48px] font-semibold">{{ value }}</div>
+        <div class="text-[48px] font-semibold">{{Math.round(value)}}</div>
         <div
           class="text-[17px]/[2.1] font-bold"
           :class="{

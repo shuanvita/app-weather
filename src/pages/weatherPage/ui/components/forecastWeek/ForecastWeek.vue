@@ -20,7 +20,7 @@ const data = context.data
 </script>
 
 <template>
-  <div class="grid grid-cols-7 gap-4">
+  <div class="grid grid-cols-7 gap-3.5 pl-1.5">
     <ForecastDayCard
       v-for="(item, idx) in data?.forecastDays"
       :key="`forecast-day-${idx}`"

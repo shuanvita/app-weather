@@ -11,76 +11,76 @@ const weatherGroups = {
   clear: {
     codes: [0, 1],
     image: '/images/clear.png',
-    svg: '/svg/outline/sun.svg',
+    svg: 'outline/sun',
     text: 'Clear sky',
   },
   // Overcast
   partlyCloudy: {
     codes: [2, 3],
     image: '/images/cloudy.png',
-    svg: '/svg/outline/cloudy.svg',
+    svg: 'outline/cloudy',
     text: 'Overcast',
   },
   // Fog
   fog: {
     codes: [45, 48],
     image: '/images/fog.png',
-    svg: '/svg/outline/fog.svg',
+    svg: 'outline/fog',
     text: 'Fog',
   },
   // Drizzle
   drizzle: {
     codes: [51, 53, 55],
     image: '/images/drizzle.png',
-    svg: '/svg/outline/drizzle.svg',
+    svg: 'outline/drizzle',
     text: 'Drizzle',
   },
   // Drizzle with Ice
   drizzleIce: {
     codes: [56, 57],
     image: '/images/drizzle-ice.png',
-    svg: '/svg/outline/drizzle-ice.svg',
+    svg: 'outline/drizzle-ice',
     text: 'Drizzle with Ice',
   },
   // Rain
   rain: {
     codes: [61, 63, 65],
     image: '/images/rain.png',
-    svg: '/svg/outline/rain.svg',
+    svg: 'outline/rain',
     text: 'Rain',
   },
   // Freezing rain
   sleet: {
     codes: [66, 67],
     image: '/images/drizzle-ice.png',
-    svg: '/svg/outline/drizzle-ice.svg',
+    svg: 'outline/drizzle-ice',
     text: 'Freezing rain',
   },
   // Snow
   snow: {
     codes: [71, 73, 75, 77],
     image: '/images/snow.png',
-    svg: '/svg/outline/snow.svg',
+    svg: 'outline/snow',
     text: 'Snow',
   },
   // Showers & Snow showers
   showers: {
     codes: [80, 81, 82, 85, 86],
     image: '/images/rain-showers.png',
-    svg: '/svg/outline/rain-showers.svg',
+    svg: 'outline/rain-showers',
     text: 'Showers',
   },
   // Thunderstorm
   thunderstorm: {
     codes: [95],
     image: '/images/thunderstorm.png',
-    svg: '/svg/outline/thunderstorm.svg',
+    svg: 'outline/thunderstorm',
     text: 'Thunderstorm',
   },
   thunderstormHail: {
     codes: [96, 99],
     image: '/images/thunderstorm-with-hail.png',
-    svg: '/svg/outline/thunderstorm-with-hail.svg',
+    svg: 'outline/thunderstorm-with-hail',
     text: 'Thunderstorm with Hail',
   },
 }
