@@ -56,6 +56,7 @@ export const useWeather = () => {
     if (lastCity.value && lastCity.value !== weatherConfig.defaultCity) {
       await load(lastCity.value)
     }
+    await load(currentCity.value)
   })
 
   return {

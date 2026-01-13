@@ -3,7 +3,7 @@ import { useWeather } from './index'
 import type { NormalizeWeatherTypes } from './normalizeWeather.types'
 
 export const useNormalizeData = (activeDayIndex: Ref<number>) => {
-  const { data, load, currentCity } = useWeather()
+  const { data, load, currentCity, loading } = useWeather()
 
   const normalizeWeatherData = computed<NormalizeWeatherTypes>(() => {
     const daily = data.value?.daily
@@ -48,5 +48,5 @@ export const useNormalizeData = (activeDayIndex: Ref<number>) => {
     }
   })
 
-  return { normalizeWeatherData, load, currentCity }
+  return { normalizeWeatherData, load, currentCity, loading }
 }

@@ -6,7 +6,6 @@ import SunriseSunset from '@/pages/weatherPage/ui/components/sunriseSunset/Sunri
 import UiTabs from '@/shared/ui/uiTabs/UiTabs.vue'
 import { computed } from 'vue'
 import TodayOverviewCards from '@/pages/weatherPage/ui/components/todayOverviewCards/TodayOverviewCards.vue'
-import { ThemeSwitcher } from '@/features/theme-switcher'
 
 const { activeDayIndex } = defineProps({
   activeDayIndex: {
